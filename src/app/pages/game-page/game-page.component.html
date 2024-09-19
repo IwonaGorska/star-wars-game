@@ -4,6 +4,13 @@
     </mat-card-header>
     
     <mat-card-content>
+      <div class="resource-selection">
+        <mat-radio-group [(ngModel)]="selectedOption">
+          <mat-radio-button value="person">Person vs Person</mat-radio-button>
+          <mat-radio-button value="starship">Starship vs Starship</mat-radio-button>
+          <mat-radio-button value="mix">Mix (Random)</mat-radio-button>
+        </mat-radio-group>
+      </div>
       <div class="button-container">
         <button mat-raised-button color="primary" (click)="startGame()" [disabled]="isLoading">
           {{ isLoading ? 'Loading...' : 'Start Game' }}
@@ -28,7 +35,7 @@
           </mat-card-content>
         </mat-card>
   
-        <mat-card class="entity-card" [ngClass]="{ 'winner-card': winner.includes('Right Entity') }">
+        <mat-card class="entity-card" [ngClass]="{ 'winner-card': winner.includes('Right Player') }">
           <mat-card-header>
             <mat-card-title>Right Player</mat-card-title>
           </mat-card-header>

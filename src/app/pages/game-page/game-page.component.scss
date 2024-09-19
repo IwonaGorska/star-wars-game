@@ -22,6 +22,11 @@
     gap: 10px;
     margin-bottom: 20px;
   }
+
+  .resource-selection {
+    margin-bottom: 20px;
+    text-align: center;
+  }
   
   .entity-container {
     display: flex;
@@ -54,6 +59,10 @@
   .winner-card {
     background-color: #4caf50 !important;
     color: #FFF;
+  }
+
+  mat-radio-group, mat-radio-button {
+    opacity: 1 !important;
   }
 
   
