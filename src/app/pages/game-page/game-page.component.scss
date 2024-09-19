@@ -1,0 +1,50 @@
+.game-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFF;
+    position: relative;
+    top: 100px;
+
+    .card-header {
+      margin: auto;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .entity-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .entity-card {
+    width: 300px;
+    background-color: #FFF;
+    border: solid 2px;
+    border-color: rgb(4, 4, 41); 
+  }
+  
+  .winner-container {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  .winner-container-card {
+    background-color: #FFF;
+  }
+
+  
