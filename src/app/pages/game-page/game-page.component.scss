@@ -35,6 +35,10 @@
     background-color: #FFF;
     border: solid 2px;
     border-color: rgb(4, 4, 41); 
+
+    .details {
+      margin-top: 20px;
+    }
   }
   
   .winner-container {
@@ -45,6 +49,11 @@
 
   .winner-container-card {
     background-color: #FFF;
+  }
+
+  .winner-card {
+    background-color: #4caf50 !important;
+    color: #FFF;
   }
 
   

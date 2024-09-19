@@ -1,50 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { SwapiService } from '../../services/swapi.service';
 import { CommonModule } from '@angular/common';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
-import { map, Subscription, switchMap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
   imports: [
     CommonModule,
-    // BrowserModule,
-    // HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule,
-    // BrowserAnimationsModule
+    MatProgressSpinnerModule
   ],
   providers: [SwapiService],
   templateUrl: './game-page.component.html',
-  styleUrl: './game-page.component.scss',
+  styleUrls: ['./game-page.component.scss'],
 })
-export class GamePageComponent {
+export class GamePageComponent implements OnDestroy {
   entity1: any = null;
   entity2: any = null;
   winner: string = '';
   isLoading: boolean = false;
+  leftWins: number = 0;  // Track wins for the left player
+  rightWins: number = 0; // Track wins for the right player
   private subscriptions: Subscription[] = [];
 
-  //TODO: disabled buttons should be a little more visible xd
-
-  constructor(private swapiService: SwapiService) { }
-
-  ngOnInit(): void {
-    // this.playGame();
-  }
+  constructor(private swapiService: SwapiService) {}
 
   startGame(): void {
     this.isLoading = true;
     this.winner = '';
-    
-    // Fetch two random entities (person or starship)
+
+    // Fetch two random entities (either person or starship)
     this.subscriptions.push(
       this.getRandomEntity().subscribe(entity1 => {
         this.entity1 = entity1;
@@ -78,6 +69,7 @@ export class GamePageComponent {
     );
   }
 
+  // Fetch a random starship
   getRandomStarship() {
     return this.swapiService.getStarshipList().pipe(
       switchMap(response => {
@@ -90,14 +82,17 @@ export class GamePageComponent {
     );
   }
 
+  // Compare the two entities and update the winner
   compareEntities(): void {
     const entity1Value = this.getComparisonValue(this.entity1);
     const entity2Value = this.getComparisonValue(this.entity2);
 
     if (entity1Value > entity2Value) {
-      this.winner = `Entity 1 (${this.entity1.name}) wins with a value of ${entity1Value}`;
+      this.winner = `Left Entity (${this.entity1.name || this.entity1.model}) wins!`;
+      this.leftWins++;  // Increment left side wins
     } else if (entity2Value > entity1Value) {
-      this.winner = `Entity 2 (${this.entity2.name}) wins with a value of ${entity2Value}`;
+      this.winner = `Right Entity (${this.entity2.name || this.entity2.model}) wins!`;
+      this.rightWins++; // Increment right side wins
     } else {
       this.winner = 'It’s a tie!';
     }
@@ -122,11 +117,4 @@ export class GamePageComponent {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-
 }
-
-// bootstrapApplication(GamePageComponent, {
-//   providers: [
-//     provideHttpClient() // Make sure to provide HTTP client here
-//   ]
-// }).catch(err => console.error(err));
