@@ -1,25 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 // @import '~@angular/material/prebuilt-themes/indigo-pink.css';  // Light theme example
 
+:root {
+    --main-color:rgb(4, 4, 41);
+}
+
 html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background-color: rgb(4, 4, 41); 
+    background-color: var(--main-color) !important;
 }
-
-//todo color variables
 
 mat-mdc-card {
     background-color: white; 
 }
 
 .mat-mdc-radio-button.mat-mdc-radio-checked .mat-ripple-element {
-    background-color: rgb(4, 4, 41) !important;
+    background-color: var(--main-color) !important;
 }
 
 .mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
-    background-color: rgb(4, 4, 41) !important;
+    background-color: var(--main-color) !important;
 }
 
 .mat-mdc-radio-button
@@ -27,11 +29,11 @@ mat-mdc-card {
     .mdc-radio__native-control:enabled:checked
     + .mdc-radio__background
     .mdc-radio__outer-circle {
-    border-color: rgb(4, 4, 41) !important;
+    border-color: var(--main-color) !important;
 }
 
 .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
-    border-color: rgb(4, 4, 41) !important;
+    border-color: var(--main-color) !important;
 }
 
 .mdc-label {

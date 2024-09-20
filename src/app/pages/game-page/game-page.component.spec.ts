@@ -51,12 +51,6 @@ describe('GamePageComponent', () => {
     await fixture.whenStable();
     fixture.detectChanges();
 
-    // Debugging output
-    console.log('getPeopleList called:', mockSwapiService.getPeopleList.calls.any());
-    console.log('getPersonById called:', mockSwapiService.getPersonById.calls.any());
-    console.log('getStarshipList called:', mockSwapiService.getStarshipList.calls.any());
-    console.log('getStarshipById called:', mockSwapiService.getStarshipById.calls.any());
-
     // Check that the service methods were called
     expect(mockSwapiService.getPeopleList).toHaveBeenCalled();
     expect(mockSwapiService.getPersonById).toHaveBeenCalled();  // Check if called without specific arguments

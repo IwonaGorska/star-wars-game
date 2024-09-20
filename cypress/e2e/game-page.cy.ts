@@ -11,7 +11,6 @@ describe('Game Page', () => {
       cy.contains('Start').click();
   
       // Ensure that two entities are displayed
-    //   cy.get('.entity-card').should('have.length', 2);
       cy.get('.entity-card', { timeout: 10000 }).should('have.length', 2);  // Adjust the timeout if necessary
     });
   
@@ -21,10 +20,8 @@ describe('Game Page', () => {
       cy.contains('Start').click();
   
       // Wait for loading
-        // cy.get('mat-progress-spinner').should('exist');
       cy.get('mat-progress-spinner', { timeout: 10000 }).should('exist');  // Wait for up to 10 seconds for the spinner to appear
 
-    //   cy.get('mat-progress-spinner').should('not.exist'); // Wait for spinner to disappear
       cy.get('mat-progress-spinner', { timeout: 10000 }).should('not.exist');
   
       // Ensure that the winner is declared
@@ -37,7 +34,6 @@ describe('Game Page', () => {
       cy.contains('Start').click();
   
       // Wait for game to load
-    //   cy.get('mat-progress-spinner').should('not.exist');
       cy.get('mat-progress-spinner', { timeout: 10000 }).should('not.exist');
   
       // Click Reset button

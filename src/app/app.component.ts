@@ -17,6 +17,6 @@ export class AppComponent {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient() // Make sure to provide HTTP client here
+    provideHttpClient()
   ]
 }).catch(err => console.error(err));

@@ -29,13 +29,11 @@ export class GamePageComponent implements OnDestroy {
   entity2: any = null;
   winner: string = '';
   isLoading: boolean = false;
-  leftWins: number = 0;  // Track wins for the left player
-  rightWins: number = 0; // Track wins for the right player
+  leftWins: number = 0;
+  rightWins: number = 0;
   selectedOption: string = 'mix'; // Selected option: 'person', 'starship', or 'mix'
   private subscriptions: Subscription[] = [];
 
-
-  //TODO: napraw zielony kolor
   constructor(private swapiService: SwapiService) {}
 
   startGame(): void {
@@ -107,10 +105,10 @@ export class GamePageComponent implements OnDestroy {
 
     if (entity1Value > entity2Value) {
       this.winner = `Left Player (${this.entity1.name || this.entity1.model}) wins!`;
-      this.leftWins++;  // Increment left side wins
+      this.leftWins++;
     } else if (entity2Value > entity1Value) {
       this.winner = `Right Player (${this.entity2.name || this.entity2.model}) wins!`;
-      this.rightWins++; // Increment right side wins
+      this.rightWins++;
     } else {
       this.winner = 'It’s a tie!';
     }
