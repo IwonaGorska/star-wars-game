@@ -23,7 +23,7 @@
       <mat-progress-spinner *ngIf="isLoading" diameter="50"></mat-progress-spinner>
       
       <div *ngIf="entity1 && entity2" class="entity-container">
-        <mat-card class="entity-card" [ngClass]="{ 'winner-card': winner.includes('Left Entity') }">
+        <mat-card class="entity-card" [ngClass]="{ 'winner-card': winner.includes('Left Player') }">
           <mat-card-header>
             <mat-card-title>Left Player</mat-card-title>
           </mat-card-header>

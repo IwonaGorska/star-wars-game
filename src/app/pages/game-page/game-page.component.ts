@@ -34,6 +34,8 @@ export class GamePageComponent implements OnDestroy {
   selectedOption: string = 'mix'; // Selected option: 'person', 'starship', or 'mix'
   private subscriptions: Subscription[] = [];
 
+
+  //TODO: napraw zielony kolor
   constructor(private swapiService: SwapiService) {}
 
   startGame(): void {
