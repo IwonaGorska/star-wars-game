@@ -32,6 +32,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -91,9 +92,23 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css",
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "e2e": {
+          "builder": "ngx-build-plus:execute",
+          "options": {
+            "commands": {
+              "cypress:run": {
+                "command": "npm run cypress:run"
+              },
+              "cypress:open": {
+                "command": "npm run cypress:open"
+              }
+            }
           }
         }
       }

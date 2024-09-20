@@ -1,0 +1,58 @@
+<mat-card class="game-container">
+    <mat-card-header class="card-header">
+      <mat-card-title class="card-title">Star Wars Battle Game</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="resource-selection">
+        <mat-radio-group [(ngModel)]="selectedOption">
+          <mat-radio-button value="person">Person vs Person</mat-radio-button>
+          <mat-radio-button value="starship">Starship vs Starship</mat-radio-button>
+          <mat-radio-button value="mix">Mix (Random)</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="button-container">
+        <button mat-raised-button color="primary" (click)="startGame()" [disabled]="isLoading">
+          {{ isLoading ? 'Loading...' : 'Start Game' }}
+        </button>
+        <button mat-raised-button color="accent" (click)="resetGame()" [disabled]="!entity1 && !entity2">
+          Reset Game
+        </button>
+      </div>
+      
+      <mat-progress-spinner *ngIf="isLoading" diameter="50"></mat-progress-spinner>
+      
+      <div *ngIf="entity1 && entity2" class="entity-container">
+        <mat-card class="entity-card" [ngClass]="{ 'winner-card': winner.includes('Left Player') }">
+          <mat-card-header>
+            <mat-card-title>Left Player</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="details">
+            <p>Name: {{ entity1.name }}</p>
+            <p *ngIf="entity1.mass">Mass: {{ entity1.mass }} kg</p>
+            <p *ngIf="entity1.crew">Crew: {{ entity1.crew }}</p>
+            <p>Total Wins: {{ leftWins }}</p>
+          </mat-card-content>
+        </mat-card>
+  
+        <mat-card class="entity-card" [ngClass]="{ 'winner-card': winner.includes('Right Player') }">
+          <mat-card-header>
+            <mat-card-title>Right Player</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="details">
+            <p>Name: {{ entity2.name }}</p>
+            <p *ngIf="entity2.mass">Mass: {{ entity2.mass }} kg</p>
+            <p *ngIf="entity2.crew">Crew: {{ entity2.crew }}</p>
+            <p>Total Wins: {{ rightWins }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
+      <div *ngIf="winner" class="winner-container">
+        <div class="winner-container-card">
+            {{ winner }}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
