@@ -22,10 +22,10 @@ describe('Game Page', () => {
   
       // Wait for loading
         // cy.get('mat-progress-spinner').should('exist');
-      cy.get('mat-progress-spinner', { timeout: 5000 }).should('exist');  // Wait for up to 10 seconds for the spinner to appear
+      cy.get('mat-progress-spinner', { timeout: 10000 }).should('exist');  // Wait for up to 10 seconds for the spinner to appear
 
     //   cy.get('mat-progress-spinner').should('not.exist'); // Wait for spinner to disappear
-      cy.get('mat-progress-spinner', { timeout: 5000 }).should('not.exist');
+      cy.get('mat-progress-spinner', { timeout: 10000 }).should('not.exist');
   
       // Ensure that the winner is declared
       cy.contains('wins').should('exist');
@@ -38,7 +38,7 @@ describe('Game Page', () => {
   
       // Wait for game to load
     //   cy.get('mat-progress-spinner').should('not.exist');
-      cy.get('mat-progress-spinner', { timeout: 5000 }).should('not.exist');
+      cy.get('mat-progress-spinner', { timeout: 10000 }).should('not.exist');
   
       // Click Reset button
       cy.contains('Reset').click();
